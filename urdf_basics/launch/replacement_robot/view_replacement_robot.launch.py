@@ -11,7 +11,7 @@ def generate_launch_description():
         get_package_share_directory('urdf_basics'),
         'launch',
         'replacement_robot',
-        'load_week2_robot.launch.py'
+        'load_robot.launch.py'
     )
 
     # Path to the RViz configuration file
@@ -26,6 +26,7 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(load_robot_launch)
         ),
+ 
         # Joint State Publisher Node
         Node(
             package='joint_state_publisher',

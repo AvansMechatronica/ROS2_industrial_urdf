@@ -7,7 +7,7 @@ import os
 def generate_launch_description():
     # Paths to xacro and RViz config files
     package_share_directory = get_package_share_directory('urdf_basics')
-    xacro_file = os.path.join(package_share_directory, 'urdf', 'hrwros_assignment3.xacro')
+    xacro_file = os.path.join(package_share_directory, 'urdf', 'assignment3.xacro')
     rviz_config_file = os.path.join(package_share_directory, 'config', 'assignment3.rviz')
 
     return LaunchDescription([
@@ -25,23 +25,14 @@ def generate_launch_description():
             package='joint_state_publisher',
             executable='joint_state_publisher',
             name='joint_state_publisher',
-            parameters=[{'use_gui': True}],
-            ros_parameters={
-                'zeros': {
-                    'robot1_shoulder_pan_joint': 0.6207787083493841,
-                    'robot1_shoulder_lift_joint': -1.004681330618082,
-                    'robot1_elbow_joint': 1.6983449885307538,
-                    'robot1_wrist_1_joint': -2.301530778020034,
-                    'robot1_wrist_2_joint': -1.625460038967466,
-                    'robot1_wrist_3_joint': 0.0,
-                    'robot2_shoulder_pan_joint': 1.5707963267950005,
-                    'robot2_shoulder_lift_joint': -1.5525750894041779,
-                    'robot2_elbow_joint': 1.5525750894041783,
-                    'robot2_wrist_1_joint': -1.570796326795,
-                    'robot2_wrist_2_joint': -1.534353852013356,
-                    'robot2_wrist_3_joint': 0.0,
-                }
-            }
+            parameters=[{'use_gui': True},
+                        {'zeros.robot1_joint1': 0.0},
+                        {'zeros.robot1_joint2': 0.785},
+                        {'zeros.robot1_joint3': -1.57},
+                        {'zeros.robot1_joint4': 0.0},
+                        {'zeros.robot1_joint5': 0.785},
+                        {'zeros.robot1_joint6': 0.0},         
+            ],
         ),
         # RViz Node
         Node(

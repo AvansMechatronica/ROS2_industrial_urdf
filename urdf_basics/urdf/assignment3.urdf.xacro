@@ -82,33 +82,32 @@
     </visual>
   </link>
 
-  <joint name="robot2_pedestal_joint" type="fixed">
+  <joint name="robot2_pedestal_joint_to_world" type="fixed">
     <origin xyz="-7.8 -1.5 0" />
     <parent link="world" />
     <child link="robot2_pedestal_link" />
   </joint>
 
 
- 
   <!-- Update the below block for assignment 3 here -->
 
   <xacro:include filename="$(find urdf_basics)/urdf/robot/lrmate200ic.urdf.xacro"/>
   <xacro:fanuc_lrmate200ic prefix="robot2_"/>
-  <!--
-  <joint name="robot2_robot2_pedestal_joint" type="fixed">
-    <parent link="robot2_pedestal_link" />
-    <child link="robot2_base_link" />
-    <origin xyz="0 0 0.60" rpy="0 0 ${radians(180)}" />
-  </joint>
-  -->
 
-  <!-- robot1 to pedestal. -->
-  <!--
+  <!-- robot2 to pedestal. -->
   <joint name="robot2_to_pedestal" type="fixed">
     <origin xyz="0 0 0.6" rpy="0 0 ${radians(90)}" />
     <parent link="robot2_pedestal_link" />
-    <child link="base_link" />
+    <child link="robot2_base_link" />
   </joint>
-  -->
+
+  <!-- Vacuum Gripper2 -->
+  <xacro:vacuum_gripper_urdf prefix="vacuum_gripper2_" joint_prefix="vacuum_gripper2_joint"/>
+
+  <!-- gripper2 to robot1. -->
+  <joint name="gripper2_to_robot2" type="fixed">
+    <parent link="robot2_tool_link" />
+    <child link="vacuum_gripper2_base_link" />
+  </joint>
 
 </robot>

@@ -7,7 +7,7 @@ import os
 def generate_launch_description():
     # Paths to xacro and RViz config files
     package_share_directory = get_package_share_directory('urdf_basics')
-    xacro_file = os.path.join(package_share_directory, 'urdf', 'assignment3.xacro')
+    xacro_file = os.path.join(package_share_directory, 'urdf', 'assignment3.urdf.xacro')
     rviz_config_file = os.path.join(package_share_directory, 'config', 'assignment3.rviz')
 
     return LaunchDescription([

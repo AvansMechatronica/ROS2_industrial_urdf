@@ -1,17 +1,18 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import Command
+from launch.actions import ExecuteProcess
 from ament_index_python.packages import get_package_share_directory
+from launch.substitutions import Command
 import os
 
 def generate_launch_description():
-    # Define paths to the xacro and RViz config files
+    # Paths
     package_share_directory = get_package_share_directory('urdf_basics')
-    xacro_file = os.path.join(package_share_directory, 'urdf', 'assignment2.xacro')
+    xacro_file = os.path.join(package_share_directory, 'urdf', 'assignment2.urdf.xacro')
     rviz_config_file = os.path.join(package_share_directory, 'config', 'assignment2.rviz')
 
     return LaunchDescription([
-        # Robot State Publisher Node
+        # Robot State Publisher
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -20,7 +21,7 @@ def generate_launch_description():
                 'robot_description': Command(['xacro ', xacro_file])
             }]
         ),
-        # Joint State Publisher Node
+        # Joint State Publisher
         Node(
             package='joint_state_publisher',
             executable='joint_state_publisher',
@@ -41,7 +42,7 @@ def generate_launch_description():
             
             ],
         ),
-        # RViz Node
+       # RViz Node
         Node(
             package='rviz2',
             executable='rviz2',

@@ -11,7 +11,7 @@ def generate_launch_description():
         get_package_share_directory('urdf_basics'),
         'urdf',
         'robot',
-        'lrmate200ic.xacro'
+        'lrmate200ic_environment.urdf.xacro'
     )
 
     return LaunchDescription([

@@ -1,3 +1,3 @@
 # ROS2_industrial_urdf
 
-## Use for build: colcon build --symlink-install
+## EOL replaced in [ROS2_industrial](https://github.com/AvansMechatronica/ROS2_industrial.git)
